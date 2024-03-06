@@ -16,7 +16,7 @@ def count_points_on_curve(a, b, p):
         if is_quadratic_residue(rhs, p) or rhs == 0:
             count += 2 if rhs != 0 else 1
     # Add one for the point at infinity
-    return count + 1
+    return count + 1 #1 for the (infinity,infinity)
 def find_points_on_curve(a, b, p):
     """Find points on the curve y^2 = x^3 + ax + b mod p"""
     points = []
@@ -81,7 +81,7 @@ class Alice:
 
         self.Sab = self.ka * self.publicB  # Shared secret
         # print("bBbb",self.Sab)
-        self.c_m = M_new + self.Sab  # Encrypt the message by adding the shared secret
+        self.c_m = M_new + self.Sab   # Encrypt the message by adding the shared secret
         return self.A, self.c_m
 
 
