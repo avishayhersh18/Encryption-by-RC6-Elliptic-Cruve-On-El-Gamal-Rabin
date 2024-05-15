@@ -80,8 +80,9 @@ class Alice:
         M_new = Point(self.curve, M, y)  # Create the new point with the x and y coordinates
 
         self.Sab = self.ka * self.publicB  # Shared secret
-        # print("bBbb",self.Sab)
-        self.c_m = M_new + self.Sab   # Encrypt the message by adding the shared secret
+        print("bBbb",self.Sab)
+        self.c_m = M_new + self.Sab
+        print("bBbb",self.c_m)# Encrypt the message by adding the shared secret
         return self.A, self.c_m
 
 

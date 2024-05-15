@@ -72,8 +72,7 @@ def encrypt_block(sentence, S, index):
 
 def main():
     print("^^^^^^ ENCRYPTION ^^^^^^")
-    message = 'I love you Bob, are you?'
-    # sentence = input("Enter Sentence (0-16 characters): ")
+    message = input("Enter Sentence (0-16 characters): ")
     if len(message) < 16:
         message = message + " " * (16 - len(message))
     print(f"Message to encrypt: {message}, Length: {len(message)}")

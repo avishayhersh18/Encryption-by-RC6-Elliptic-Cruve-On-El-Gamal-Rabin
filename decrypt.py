@@ -130,12 +130,15 @@ def main():
 
     try:
         with open("encrypted.txt", "rb") as f:
-            enc_sentence = f.readline()
+            enc_sentence = b"".join(f.readlines())
             if not enc_sentence:
                 print("Encrypted input not found in encrypted.txt")
                 sys.exit(0)
     except FileNotFoundError:
         print("Encrypted input not found in encrypted.txt")
+        sys.exit(0)
+    except Exception:
+        print("Encrypted input is not valid in encrypted.txt")
         sys.exit(0)
     print("Received Encrypted message, Decrypting...")
     print(f"Encrypted Message: {enc_sentence},\nLength: {len(enc_sentence)}")
@@ -165,7 +168,7 @@ def main():
     print(f"Signature Is {'' if is_verified else 'not '}Verified!")
 
     # Delete temp files for session
-    temp_paths = ["status.txt", "encryptedKEY.txt", "signature.txt"]
+    temp_paths = ["status.txt", "encrypted.txt", "encryptedKEY.txt", "signature.txt"]
     for path in temp_paths:
         if os.path.exists(path):
             os.remove(path)

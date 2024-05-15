@@ -59,8 +59,10 @@ def verify_rabin(signature, U, n, msg) -> bool:
 
 class RabinSignature:
     def __init__(self, msg):
-        self._p = 19
-        self._q = 13
+        self._p = 187837245733959530296768935983
+        self._q = 850303114765709315608946810539
+        # self._p = 19
+        # self._q = 13
         self.n = self._p * self._q
         self._msg = msg
         print(f"Rabin Signature:\n"
@@ -87,16 +89,3 @@ class RabinSignature:
         U = b'\x00' * i
 
         return s, U
-
-
-if __name__ == '__main__':
-    # signature, U = sign_rabin(p, q,msg)
-
-    print(f"\nsignature -> (x: {signature},U: {U})")
-    with open("signature.txt", "w") as f:
-        f.write("\n".join([str(signature), U.decode("utf-8"), str(n)]))
-
-    if 1 == verify_rabin(signature, U, msg):
-        print("message is authentic")
-    else:
-        print("message is not authentic")

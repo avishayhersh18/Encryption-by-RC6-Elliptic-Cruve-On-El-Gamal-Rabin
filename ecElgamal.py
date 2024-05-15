@@ -6,6 +6,7 @@ def is_quadratic_residue(n, p):
     """Check if n is a quadratic residue modulo p"""
     return pow(n, (p - 1) // 2, p) == 1
 
+
 def count_points_on_curve(a, b, p):
     count = 0
     for x in range(p):
@@ -16,6 +17,7 @@ def count_points_on_curve(a, b, p):
             count += 2 if rhs != 0 else 1
     # Add one for the point at infinity
     return count + 1
+
 
 def find_points_on_curve(a, b, p):
     """Find points on the curve y^2 = x^3 + ax + b mod p"""
@@ -91,16 +93,3 @@ class SenderEcElgamal:
         self.S_ab = self.ka * self.publicB  # Shared secret
         self.C_m = M_point + self.S_ab  # Encrypt the key by adding the shared secret
         return self.A, self.C_m
-
-
-# Example usage
-# bob = ReceiverEcElgamal()
-# public_params = bob.get_public_params()
-#
-# alice = SenderEcElgamal(public_params)
-# M = 23  # The message Alice wants to send
-# A, C_m = alice.encrypt_key(M)
-#
-# # Bob receives (A, c_m) and decrypts the message
-# decrypted_key = bob.receive_and_decrypt(A, C_m)
-# print(f"Original Key: {M}, Decrypted Key: {decrypted_key}")
